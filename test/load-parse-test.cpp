@@ -104,7 +104,11 @@ void Test_ParseEmlFile(TString path)
 int main()
 {
     std::cout << "Hello, from mimesis!" << std::endl;
-    std::wcout.imbue(std::locale("chs")); // set your language
+#ifdef _WIN32
+    std::wcout.imbue(std::locale("chs")); // set your language   windows  chs/us
+#else
+    std::wcout.imbue(std::locale("zh_CN.UTF-8")); // set your language  linux  
+#endif
 
     Test_ParseEmlFile(TEXT("d:\\test.eml")); //// input your file path
 
